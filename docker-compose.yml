@@ -30,8 +30,6 @@ services:
     restart: always
     depends_on:
       - mongo
-    ports:
-      - 24224:24224
 
   spring-gateway-sandbox:
     image: maven:3.6.3-openjdk-8
