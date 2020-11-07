@@ -45,7 +45,7 @@ services:
     command: mvn spring-boot:run
 
   spring-sandbox-java:
-    image: spring-sandbox-java:dev
+    image: maven:3.6.3-openjdk-8
     container_name: spring-sandbox-java
     depends_on:
       - fluentd
@@ -62,6 +62,8 @@ services:
     volumes:
       - /Users/quentin/.m2:/root/.m2
       - /Users/quentin/Programmation/global-sandbox/spring-sandbox-java/:/src
+    working_dir: /src
+    command: mvn spring-boot:run
 
   spring-sandbox-kotlin:
     image: gradle:6.7.0-jdk8
