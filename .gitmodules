@@ -1,0 +1,9 @@
+[submodule "spring-gateway-sandbox"]
+	path = spring-gateway-sandbox
+	url = git@github.com:quentinpigne/spring-gateway-sandbox.git
+[submodule "spring-sandbox-java"]
+	path = spring-sandbox-java
+  url = git@github.com:quentinpigne/spring-sandbox-java.git
+[submodule "spring-sandbox-kotlin"]
+	path = spring-sandbox-kotlin
+  url = git@github.com:quentinpigne/spring-sandbox-kotlin.git
