@@ -45,7 +45,7 @@ services:
       DB_USER: admin
       DB_PASSWORD: admin
     ports:
-      - 8083:8080
+      - 9000:8080
 
   spring-gateway-sandbox:
     image: maven:3.6.3-openjdk-8
@@ -73,8 +73,6 @@ services:
       DB_NAME: springsandboxjava
       DB_USERNAME: admin
       DB_PASSWORD: admin
-    ports:
-      - 8081:8080
     volumes:
       - /Users/quentin/.m2:/root/.m2
       - /Users/quentin/Programmation/global-sandbox/spring-sandbox-java/:/src
@@ -85,6 +83,7 @@ services:
     image: gradle:6.7.0-jdk8
     container_name: spring-sandbox-kotlin
     depends_on:
+      - fluentd
       - postgres
     environment:
       SPRING_PROFILES_ACTIVE: docker
@@ -93,8 +92,6 @@ services:
       DB_NAME: springsandboxkotlin
       DB_USERNAME: admin
       DB_PASSWORD: admin
-    ports:
-      - 8082:8080
     volumes:
       - gradle-data:/home/gradle/.gradle
       - /Users/quentin/Programmation/global-sandbox/spring-sandbox-kotlin/:/home/gradle/project
