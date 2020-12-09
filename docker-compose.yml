@@ -6,7 +6,7 @@ services:
     container_name: postgres
     restart: always
     environment:
-      POSTGRES_MULTIPLE_DATABASES: keycloak,springsandboxjava,springsandboxkotlin
+      POSTGRES_MULTIPLE_DATABASES: springsandboxjava,springsandboxkotlin
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
     ports:
@@ -30,22 +30,6 @@ services:
     restart: always
     depends_on:
       - mongo
-
-  keycloak:
-    image: jboss/keycloak:11.0.3
-    container_name: keycloak
-    restart: always
-    depends_on:
-      - postgres
-    environment:
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: Password@123
-      DB_VENDOR: postgres
-      DB_ADDR: postgres
-      DB_USER: admin
-      DB_PASSWORD: admin
-    ports:
-      - 9000:8080
 
   spring-gateway-sandbox:
     image: maven:3.6.3-openjdk-8
