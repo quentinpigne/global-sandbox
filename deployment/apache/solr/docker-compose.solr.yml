@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  solr1:
+    image: solr:8.7.0
+    container_name: solr1
+    ports:
+      - 8981:8983
+    environment:
+      - ZK_HOST=zoo1:2181,zoo2:2181,zoo3:2181
+    depends_on:
+      - zoo1
+      - zoo2
+      - zoo3
+    volumes:
+      - solr1-data:/var/solr
+
+  solr2:
+    image: solr:8.7.0
+    container_name: solr2
+    ports:
+      - 8982:8983
+    environment:
+      - ZK_HOST=zoo1:2181,zoo2:2181,zoo3:2181
+    depends_on:
+      - zoo1
+      - zoo2
+      - zoo3
+    volumes:
+      - solr2-data:/var/solr
+
+  solr3:
+    image: solr:8.7.0
+    container_name: solr3
+    ports:
+      - 8983:8983
+    environment:
+      - ZK_HOST=zoo1:2181,zoo2:2181,zoo3:2181
+    depends_on:
+      - zoo1
+      - zoo2
+      - zoo3
+    volumes:
+      - solr3-data:/var/solr
+
+  solr4:
+    image: solr:8.7.0
+    container_name: solr4
+    ports:
+      - 8984:8983
+    environment:
+      - ZK_HOST=zoo1:2181,zoo2:2181,zoo3:2181
+    depends_on:
+      - zoo1
+      - zoo2
+      - zoo3
+    volumes:
+      - solr4-data:/var/solr
+
+networks:
+  default:
+    name: apache-cluster-network
+
+volumes:
+  solr1-data:
+    name: solr1-data
+  solr2-data:
+    name: solr2-data
+  solr3-data:
+    name: solr3-data
+  solr4-data:
+    name: solr4-data
