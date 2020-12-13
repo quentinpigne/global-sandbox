@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  nimbus:
+    image: storm:2.2.0
+    container_name: nimbus
+    restart: always
+    depends_on:
+      - zoo1
+      - zoo2
+      - zoo3
+    ports:
+      - 6627:6627
+    volumes:
+      - nimbus-data:/data
+      - nimbus-logs:/logs
+      - ./storm/storm.yaml:/conf/storm.yaml
+    command: storm nimbus
+
+  supervisor:
+    image: storm:2.2.0
+    container_name: supervisor
+    restart: always
+    depends_on:
+      - nimbus
+      - zoo1
+      - zoo2
+      - zoo3
+    volumes:
+      - supervisor-data:/data
+      - supervisor-logs:/logs
+      - ./storm/storm.yaml:/conf/storm.yaml
+    command: storm supervisor
+
+networks:
+  default:
+    name: apache-cluster-network
+
+volumes:
+  nimbus-data:
+    name: nimbus-data
+  nimbus-logs:
+    name: nimbus-logs
+  supervisor-data:
+    name: supervisor-data
+  supervisor-logs:
+    name: supervisor-logs
