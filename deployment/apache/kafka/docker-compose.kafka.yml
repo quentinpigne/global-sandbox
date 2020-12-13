@@ -1,0 +1,77 @@
+version: '3.8'
+
+services:
+  kafka1:
+    image: bitnami/kafka:2.6.0
+    container_name: kafka1
+    hostname: kafka1
+    ports:
+      - 9091:9091
+    environment:
+      - ALLOW_PLAINTEXT_LISTENER=true
+      - KAFKA_CFG_BROKER_ID=1
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zoo1:2181,zoo2:2181,zoo3:2181
+      - KAFKA_CFG_LISTENERS=INTERNAL://0.0.0.0:9092,EXTERNAL://0.0.0.0:9091
+      - KAFKA_CFG_ADVERTISED_LISTENERS=INTERNAL://kafka1:9092,EXTERNAL://localhost:9091
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=INTERNAL
+    depends_on:
+      - zoo1
+      - zoo2
+      - zoo3
+    volumes:
+      - kafka1-data:/bitnami/data/
+
+  kafka2:
+    image: bitnami/kafka:2.6.0
+    container_name: kafka2
+    hostname: kafka2
+    ports:
+      - 9094:9094
+    environment:
+      - ALLOW_PLAINTEXT_LISTENER=true
+      - KAFKA_CFG_BROKER_ID=2
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zoo1:2181,zoo2:2181,zoo3:2181
+      - KAFKA_CFG_LISTENERS=INTERNAL://0.0.0.0:9092,EXTERNAL://0.0.0.0:9094
+      - KAFKA_CFG_ADVERTISED_LISTENERS=INTERNAL://kafka2:9092,EXTERNAL://localhost:9094
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=INTERNAL
+    depends_on:
+      - zoo1
+      - zoo2
+      - zoo3
+    volumes:
+      - kafka2-data:/bitnami/data/
+
+  kafka3:
+    image: bitnami/kafka:2.6.0
+    container_name: kafka3
+    hostname: kafka3
+    ports:
+      - 9093:9093
+    environment:
+      - ALLOW_PLAINTEXT_LISTENER=true
+      - KAFKA_CFG_BROKER_ID=3
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zoo1:2181,zoo2:2181,zoo3:2181
+      - KAFKA_CFG_LISTENERS=INTERNAL://0.0.0.0:9092,EXTERNAL://0.0.0.0:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=INTERNAL://kafka3:9092,EXTERNAL://localhost:9093
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=INTERNAL
+    depends_on:
+      - zoo1
+      - zoo2
+      - zoo3
+    volumes:
+      - kafka3-data:/bitnami/data/
+
+networks:
+  default:
+    name: apache-cluster-network
+
+volumes:
+  kafka1-data:
+    name: kafka1-data
+  kafka2-data:
+    name: kafka2-data
+  kafka3-data:
+    name: kafka3-data
