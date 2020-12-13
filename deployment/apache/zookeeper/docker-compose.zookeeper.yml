@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  zoo1:
+    image: zookeeper:3.6.2
+    container_name: zoo1
+    restart: always
+    hostname: zoo1
+    ports:
+      - 2181:2181
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=zoo3:2888:3888;2181
+      ZOO_4LW_COMMANDS_WHITELIST: mntr,conf,ruok
+    volumes:
+      - zoo1-data:/data
+      - zoo1-datalog:/datalog
+      - zoo1-logs:/logs
+
+  zoo2:
+    image: zookeeper:3.6.2
+    container_name: zoo2
+    restart: always
+    hostname: zoo2
+    ports:
+      - 2182:2181
+    environment:
+      ZOO_MY_ID: 2
+      ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=zoo3:2888:3888;2181
+      ZOO_4LW_COMMANDS_WHITELIST: mntr,conf,ruok
+    volumes:
+      - zoo2-data:/data
+      - zoo2-datalog:/datalog
+      - zoo2-logs:/logs
+
+  zoo3:
+    image: zookeeper:3.6.2
+    container_name: zoo3
+    restart: always
+    hostname: zoo3
+    ports:
+      - 2183:2181
+    environment:
+      ZOO_MY_ID: 3
+      ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=zoo3:2888:3888;2181
+      ZOO_4LW_COMMANDS_WHITELIST: mntr,conf,ruok
+    volumes:
+      - zoo3-data:/data
+      - zoo3-datalog:/datalog
+      - zoo3-logs:/logs
+
+networks:
+  default:
+    name: apache-cluster-network
+
+volumes:
+  zoo1-data:
+    name: zoo1-data
+  zoo1-datalog:
+    name: zoo1-datalog
+  zoo1-logs:
+    name: zoo1-logs
+  zoo2-data:
+    name: zoo2-data
+  zoo2-datalog:
+    name: zoo2-datalog
+  zoo2-logs:
+    name: zoo2-logs
+  zoo3-data:
+    name: zoo3-data
+  zoo3-datalog:
+    name: zoo3-datalog
+  zoo3-logs:
+    name: zoo3-logs
