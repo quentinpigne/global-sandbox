@@ -44,7 +44,7 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - /Users/quentin/.m2:/root/.m2
+      - maven-data:/root/.m2
       - ${BASE_SRC_DIR}/spring-gateway-sandbox/:/src
     working_dir: /src
     command: mvn spring-boot:run
@@ -63,7 +63,7 @@ services:
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - /Users/quentin/.m2:/root/.m2
+      - maven-data:/root/.m2
       - ${BASE_SRC_DIR}/spring-sandbox-java/:/src
     working_dir: /src
     command: mvn spring-boot:run
@@ -98,5 +98,7 @@ volumes:
     name: mongo-data
   mongo-config:
     name: mongo-config
+  maven-data:
+    name: maven-data
   gradle-data:
     name: gradle-data
