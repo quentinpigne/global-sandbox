@@ -14,7 +14,7 @@ services:
     volumes:
       - nimbus-data:/data
       - nimbus-logs:/logs
-      - ./storm/storm.yaml:/conf/storm.yaml
+      - ${BASE_SRC_DIR}/storm/storm.yaml:/conf/storm.yaml
     command: storm nimbus
 
   supervisor:
@@ -29,7 +29,7 @@ services:
     volumes:
       - supervisor-data:/data
       - supervisor-logs:/logs
-      - ./storm/storm.yaml:/conf/storm.yaml
+      - ${BASE_SRC_DIR}/storm/storm.yaml:/conf/storm.yaml
     command: storm supervisor
 
 networks:
