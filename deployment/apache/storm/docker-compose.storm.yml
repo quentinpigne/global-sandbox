@@ -32,6 +32,23 @@ services:
       - ${BASE_SRC_DIR}/storm/storm.yaml:/conf/storm.yaml
     command: storm supervisor
 
+  ui:
+    image: storm:2.2.0
+    container_name: ui
+    restart: always
+    depends_on:
+      - nimbus
+      - zoo1
+      - zoo2
+      - zoo3
+    ports:
+      - 8080:8080
+    volumes:
+      - ui-data:/data
+      - ui-logs:/logs
+      - ${BASE_SRC_DIR}/storm/storm.yaml:/conf/storm.yaml
+    command: storm ui
+
 networks:
   default:
     name: apache-cluster-network
@@ -45,3 +62,7 @@ volumes:
     name: supervisor-data
   supervisor-logs:
     name: supervisor-logs
+  ui-data:
+    name: ui-data
+  ui-logs:
+    name: ui-logs
