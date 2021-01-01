@@ -45,7 +45,7 @@ services:
       - 8080:8080
     volumes:
       - maven-data:/root/.m2
-      - ${BASE_SRC_DIR}/spring-gateway-sandbox/:/src
+      - ${SANDBOX_BASE_DIR}/spring-gateway-sandbox/:/src
     working_dir: /src
     command: mvn spring-boot:run
 
@@ -64,7 +64,7 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
     volumes:
       - maven-data:/root/.m2
-      - ${BASE_SRC_DIR}/spring-sandbox-java/:/src
+      - ${SANDBOX_BASE_DIR}/spring-sandbox-java/:/src
     working_dir: /src
     command: mvn spring-boot:run
 
@@ -83,7 +83,7 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
     volumes:
       - gradle-data:/home/gradle/.gradle
-      - ${BASE_SRC_DIR}/spring-sandbox-kotlin/:/home/gradle/project
+      - ${SANDBOX_BASE_DIR}/spring-sandbox-kotlin/:/home/gradle/project
     working_dir: /home/gradle/project
     command: gradle bootRun
 

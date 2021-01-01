@@ -14,7 +14,7 @@ services:
     volumes:
       - nimbus-data:/data
       - nimbus-logs:/logs
-      - ${BASE_SRC_DIR}/storm/storm.yaml:/conf/storm.yaml
+      - ${SANDBOX_BASE_DIR}/deployment/apache/storm/storm.yaml:/conf/storm.yaml
     command: storm nimbus
 
   supervisor:
@@ -29,7 +29,7 @@ services:
     volumes:
       - supervisor-data:/data
       - supervisor-logs:/logs
-      - ${BASE_SRC_DIR}/storm/storm.yaml:/conf/storm.yaml
+      - ${SANDBOX_BASE_DIR}/deployment/apache/storm/storm.yaml:/conf/storm.yaml
     command: storm supervisor
 
   ui:
@@ -46,7 +46,7 @@ services:
     volumes:
       - ui-data:/data
       - ui-logs:/logs
-      - ${BASE_SRC_DIR}/storm/storm.yaml:/conf/storm.yaml
+      - ${SANDBOX_BASE_DIR}/deployment/apache/storm/storm.yaml:/conf/storm.yaml
     command: storm ui
 
 networks:
