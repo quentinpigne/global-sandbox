@@ -2,7 +2,8 @@ version: '3.8'
 
 services:
   postgres:
-    image: postgres-multidb
+    image: postgres-multidb:13.1-alpine
+    build: ./build/postgres
     container_name: postgres
     restart: always
     environment:
