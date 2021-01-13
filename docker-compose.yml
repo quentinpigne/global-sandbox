@@ -16,7 +16,7 @@ services:
       - postgres-data:/var/lib/postgresql/data
 
   mongo:
-    image: mongo:4.4.1
+    image: mongo:4.4.3
     container_name: mongo
     restart: always
     ports:
@@ -71,7 +71,7 @@ services:
     command: mvn spring-boot:run
 
   spring-sandbox-kotlin:
-    image: gradle:6.7.0-jdk8
+    image: gradle:6.8.0-jdk8
     container_name: spring-sandbox-kotlin
     depends_on:
       - fluentd
