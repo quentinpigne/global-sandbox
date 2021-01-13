@@ -1,4 +1,5 @@
 FROM fluent/fluentd:v1.11.4-debian-1.0
+LABEL maintainers="Quentin Pigné <quentin.pigne@gmail.com>"
 
 # Use root account to use apt
 USER root

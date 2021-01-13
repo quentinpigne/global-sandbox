@@ -25,7 +25,8 @@ services:
       - mongo-config:/data/configdb
 
   fluentd:
-    image: fluentd:dev
+    image: fluentd:v1.11.4-debian-1.0
+    build: ./build/fluentd
     container_name: fluentd
     restart: always
     depends_on:
