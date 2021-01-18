@@ -1,3 +1,6 @@
+[submodule "reactjs-sandbox"]
+	path = reactjs-sandbox
+	url = git@github.com:quentinpigne/reactjs-sandbox.git
 [submodule "spring-gateway-sandbox"]
 	path = spring-gateway-sandbox
 	url = git@github.com:quentinpigne/spring-gateway-sandbox.git
