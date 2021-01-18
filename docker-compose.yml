@@ -89,6 +89,16 @@ services:
     working_dir: /home/gradle/project
     command: gradle bootRun
 
+  reactjs-sandbox:
+    image: node:15.5.1
+    container_name: reactjs-sandbox
+    ports:
+      - 3000:3000
+    volumes:
+      - ${SANDBOX_BASE_DIR}/reactjs-sandbox/:/src
+    working_dir: /src
+    command: npm start
+
 networks:
   default:
     name: dev-sandbox
