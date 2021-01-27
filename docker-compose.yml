@@ -71,7 +71,7 @@ services:
     command: mvn spring-boot:run
 
   spring-sandbox-kotlin:
-    image: gradle:6.8.0-jdk8
+    image: gradle:6.8.1-jdk8
     container_name: spring-sandbox-kotlin
     depends_on:
       - fluentd
@@ -90,7 +90,7 @@ services:
     command: gradle bootRun
 
   nodejs-sandbox:
-    image: node:15.5.1
+    image: node:15.6.0
     container_name: nodejs-sandbox
     volumes:
       - ${SANDBOX_BASE_DIR}/nodejs-sandbox/:/src
@@ -98,7 +98,7 @@ services:
     command: npm start
 
   reactjs-sandbox:
-    image: node:15.5.1
+    image: node:15.6.0
     container_name: reactjs-sandbox
     ports:
       - 3000:3000
