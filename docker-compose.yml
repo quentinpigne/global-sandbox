@@ -25,6 +25,17 @@ services:
       - mongo-data:/data/db
       - mongo-config:/data/configdb
 
+  prometheus:
+    image: prometheus:v2.24.1
+    build: ./build/prometheus
+    container_name: prometheus
+    restart: always
+    ports:
+      - 9090:9090
+    volumes:
+      - prometheus-data:/prometheus
+      - prometheus-config:/etc/prometheus
+
   fluentd:
     image: fluentd:v1.11.4-debian-1.0
     build: ./build/fluentd
@@ -118,6 +129,10 @@ volumes:
     name: mongo-data
   mongo-config:
     name: mongo-config
+  prometheus-data:
+    name: prometheus-data
+  prometheus-config:
+    name: prometheus-config
   maven-data:
     name: maven-data
   gradle-data:
