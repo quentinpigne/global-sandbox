@@ -35,6 +35,16 @@ services:
       - prometheus-data:/prometheus
       - ${SANDBOX_BASE_DIR}/deployment/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
 
+  grafana:
+    image: grafana/grafana:7.3.7
+    container_name: grafana
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - grafana-config:/etc/grafana
+
   fluentd:
     image: fluentd:v1.11.4-debian-1.0
     build: ./build/fluentd
@@ -130,6 +140,10 @@ volumes:
     name: mongo-config
   prometheus-data:
     name: prometheus-data
+  grafana-data:
+    name: grafana-data
+  grafana-config:
+    name: grafana-config
   maven-data:
     name: maven-data
   gradle-data:
