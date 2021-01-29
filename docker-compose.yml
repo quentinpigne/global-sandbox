@@ -2,8 +2,7 @@ version: '3.8'
 
 services:
   postgres:
-    image: postgres-multidb:13.1-alpine
-    build: ./build/postgres
+    image: postgres:13.1-alpine
     container_name: postgres
     restart: always
     environment:
@@ -14,6 +13,7 @@ services:
       - 5432:5432
     volumes:
       - postgres-data:/var/lib/postgresql/data
+      - ${SANDBOX_BASE_DIR}/deployment/postgres/docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d
 
   mongo:
     image: mongo:4.4.3
@@ -26,15 +26,14 @@ services:
       - mongo-config:/data/configdb
 
   prometheus:
-    image: prometheus:v2.24.1
-    build: ./build/prometheus
+    image: prom/prometheus:v2.24.1
     container_name: prometheus
     restart: always
     ports:
       - 9090:9090
     volumes:
       - prometheus-data:/prometheus
-      - prometheus-config:/etc/prometheus
+      - ${SANDBOX_BASE_DIR}/deployment/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
 
   fluentd:
     image: fluentd:v1.11.4-debian-1.0
@@ -131,8 +130,6 @@ volumes:
     name: mongo-config
   prometheus-data:
     name: prometheus-data
-  prometheus-config:
-    name: prometheus-config
   maven-data:
     name: maven-data
   gradle-data:

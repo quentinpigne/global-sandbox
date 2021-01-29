@@ -27,3 +27,9 @@ scrape_configs:
 
     static_configs:
     - targets: ['localhost:9090']
+
+  - job_name: 'springboot'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['spring-sandbox-java:8080']
+    bearer_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl19.EGmSyHOSq0Pa208ZhANTD1VyYZxYv-0y8MKZ6nlbcGM'
