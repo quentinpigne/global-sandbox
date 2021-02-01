@@ -47,7 +47,7 @@ services:
 
   fluentd:
     image: fluentd:v1.11.4-debian-1.0
-    build: ./build/fluentd
+    build: ../build/fluentd
     container_name: fluentd
     restart: always
     depends_on:
@@ -55,7 +55,7 @@ services:
 
   terracotta:
     image: terracotta-server-oss:5.7.0
-    build: ./build/terracotta
+    build: ../build/terracotta
     container_name: terracotta
 
   spring-gateway-sandbox:
