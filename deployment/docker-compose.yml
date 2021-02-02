@@ -110,7 +110,7 @@ services:
     command: gradle bootRun
 
   nodejs-sandbox:
-    image: node:15.6.0
+    image: node:15.6.0-alpine
     container_name: nodejs-sandbox
     volumes:
       - ${SANDBOX_BASE_DIR}/nodejs-sandbox/:/src
@@ -118,7 +118,7 @@ services:
     command: npm start
 
   reactjs-sandbox:
-    image: node:15.6.0
+    image: node:15.6.0-alpine
     container_name: reactjs-sandbox
     ports:
       - 3000:3000
