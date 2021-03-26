@@ -4,6 +4,7 @@ services:
   solr1:
     image: solr:8.7.0
     container_name: solr1
+    restart: always
     ports:
       - 8981:8983
     environment:
@@ -18,6 +19,7 @@ services:
   solr2:
     image: solr:8.7.0
     container_name: solr2
+    restart: always
     ports:
       - 8982:8983
     environment:
@@ -32,6 +34,7 @@ services:
   solr3:
     image: solr:8.7.0
     container_name: solr3
+    restart: always
     ports:
       - 8983:8983
     environment:
@@ -46,6 +49,7 @@ services:
   solr4:
     image: solr:8.7.0
     container_name: solr4
+    restart: always
     ports:
       - 8984:8983
     environment:
