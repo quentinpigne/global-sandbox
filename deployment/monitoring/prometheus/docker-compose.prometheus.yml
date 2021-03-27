@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  prometheus:
+    image: prom/prometheus:v2.24.1
+    container_name: prometheus
+    restart: always
+    ports:
+      - 9090:9090
+    volumes:
+      - prometheus-data:/prometheus
+      - ${SANDBOX_BASE_DIR}/deployment/monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+
+networks:
+  default:
+    name: monitoring-network
+
+volumes:
+  prometheus-data:
+    name: prometheus-data
