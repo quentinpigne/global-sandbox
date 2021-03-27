@@ -1,65 +1,6 @@
 version: '3.8'
 
 services:
-  postgres:
-    image: postgres:13.1-alpine
-    container_name: postgres
-    restart: always
-    environment:
-      POSTGRES_MULTIPLE_DATABASES: springsandboxjava,springsandboxkotlin
-      POSTGRES_USER: ${DB_USERNAME}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-    ports:
-      - 5432:5432
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-      - ${SANDBOX_BASE_DIR}/deployment/postgres/docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d
-
-  mongo:
-    image: mongo:4.4.3
-    container_name: mongo
-    restart: always
-    ports:
-      - 27017:27017
-    volumes:
-      - mongo-data:/data/db
-      - mongo-config:/data/configdb
-
-  prometheus:
-    image: prom/prometheus:v2.24.1
-    container_name: prometheus
-    restart: always
-    ports:
-      - 9090:9090
-    volumes:
-      - prometheus-data:/prometheus
-      - ${SANDBOX_BASE_DIR}/deployment/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-
-  grafana:
-    image: grafana/grafana:7.3.7
-    container_name: grafana
-    restart: always
-    ports:
-      - 3000:3000
-    volumes:
-      - grafana-data:/var/lib/grafana
-      - grafana-config:/etc/grafana
-
-  fluentd:
-    image: fluentd:v1.11.4-debian-1.0
-    build: ../build/fluentd
-    container_name: fluentd
-    restart: always
-    depends_on:
-      - mongo
-
-  terracotta:
-    image: terracotta/terracotta-server-oss:5.6.4
-    container_name: terracotta
-    restart: always
-    ports:
-      - 9410:9410
-
   spring-gateway-sandbox:
     image: maven:3.6.3-openjdk-8
     container_name: spring-gateway-sandbox
@@ -76,9 +17,6 @@ services:
   spring-sandbox-java:
     image: maven:3.6.3-openjdk-8
     container_name: spring-sandbox-java
-    depends_on:
-      - fluentd
-      - postgres
     environment:
       SPRING_PROFILES_ACTIVE: docker
       DB_HOST: postgres
@@ -89,15 +27,17 @@ services:
     volumes:
       - maven-data:/root/.m2
       - ${SANDBOX_BASE_DIR}/spring-sandbox-java/:/src
+    networks:
+      - default
+      - databases
+      - monitoring
+      - cache
     working_dir: /src
     command: mvn spring-boot:run
 
   spring-sandbox-kotlin:
     image: gradle:6.8.1-jdk8
     container_name: spring-sandbox-kotlin
-    depends_on:
-      - fluentd
-      - postgres
     environment:
       SPRING_PROFILES_ACTIVE: docker
       DB_HOST: postgres
@@ -108,6 +48,11 @@ services:
     volumes:
       - gradle-data:/home/gradle/.gradle
       - ${SANDBOX_BASE_DIR}/spring-sandbox-kotlin/:/home/gradle/project
+    networks:
+      - default
+      - databases
+      - monitoring
+      - cache
     working_dir: /home/gradle/project
     command: gradle bootRun
 
@@ -132,20 +77,17 @@ services:
 networks:
   default:
     name: dev-sandbox
+  databases:
+    external: true
+    name: databases-network
+  monitoring:
+    external: true
+    name: monitoring-network
+  cache:
+    external: true
+    name: cache-network
 
 volumes:
-  postgres-data:
-    name: postgres-data
-  mongo-data:
-    name: mongo-data
-  mongo-config:
-    name: mongo-config
-  prometheus-data:
-    name: prometheus-data
-  grafana-data:
-    name: grafana-data
-  grafana-config:
-    name: grafana-config
   maven-data:
     name: maven-data
   gradle-data:
