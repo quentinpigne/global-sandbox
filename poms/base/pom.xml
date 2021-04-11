@@ -131,4 +131,12 @@
       </plugins>
     </pluginManagement>
   </build>
+
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub Quentin Pigné Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/quentinpigne/global-sandbox</url>
+    </repository>
+  </distributionManagement>
 </project>
