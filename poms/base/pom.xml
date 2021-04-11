@@ -5,12 +5,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>fr.quentinpigne</groupId>
-  <artifactId>parent-pom</artifactId>
-  <version>${revision}${changelist}</version>
+  <artifactId>base-pom</artifactId>
+  <version>1.0</version>
   <packaging>pom</packaging>
 
-  <name>parent-pom</name>
-  <description>Parent POM of all my Java projects</description>
+  <name>base-pom</name>
+  <description>Base POM for all derived JDKs POMs</description>
   <url>https://github.com/quentinpigne/global-sandbox</url>
 
   <developers>
@@ -43,7 +43,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.home>${env.JAVA_HOME}</java.home>
-    <java.version>1.8</java.version>
+    <java.version>UNDEFINED</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <!--
