@@ -13,6 +13,9 @@
 [submodule "spring-sandbox-kotlin"]
 	path = spring-sandbox-kotlin
   url = git@github.com:quentinpigne/spring-sandbox-kotlin.git
+[submodule "storm-sandbox"]
+	path = storm-sandbox
+	url = git@github.com:quentinpigne/storm-sandbox.git
 [submodule "webpack-sandbox"]
 	path = webpack-sandbox
 	url = git@github.com:quentinpigne/webpack-sandbox.git
