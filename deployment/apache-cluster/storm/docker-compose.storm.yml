@@ -4,6 +4,7 @@ services:
   nimbus:
     image: storm:2.2.0
     container_name: nimbus
+    hostname: nimbus
     restart: always
     depends_on:
       - zoo1
@@ -14,12 +15,13 @@ services:
     volumes:
       - nimbus-data:/data
       - nimbus-logs:/logs
-      - ${SANDBOX_BASE_DIR}/deployment/apache/storm/storm.yaml:/conf/storm.yaml
+      - ${SANDBOX_BASE_DIR}/deployment/apache-cluster/storm/storm.yaml:/conf/storm.yaml
     command: storm nimbus
 
   supervisor:
     image: storm:2.2.0
     container_name: supervisor
+    hostname: supervisor
     restart: always
     depends_on:
       - nimbus
@@ -29,12 +31,13 @@ services:
     volumes:
       - supervisor-data:/data
       - supervisor-logs:/logs
-      - ${SANDBOX_BASE_DIR}/deployment/apache/storm/storm.yaml:/conf/storm.yaml
+      - ${SANDBOX_BASE_DIR}/deployment/apache-cluster/storm/storm.yaml:/conf/storm.yaml
     command: storm supervisor
 
   ui:
     image: storm:2.2.0
     container_name: ui
+    hostname: ui
     restart: always
     depends_on:
       - nimbus
@@ -46,7 +49,7 @@ services:
     volumes:
       - ui-data:/data
       - ui-logs:/logs
-      - ${SANDBOX_BASE_DIR}/deployment/apache/storm/storm.yaml:/conf/storm.yaml
+      - ${SANDBOX_BASE_DIR}/deployment/apache-cluster/storm/storm.yaml:/conf/storm.yaml
     command: storm ui
 
 networks:
