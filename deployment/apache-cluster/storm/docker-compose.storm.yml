@@ -18,10 +18,10 @@ services:
       - ${SANDBOX_BASE_DIR}/deployment/apache-cluster/storm/storm.yaml:/conf/storm.yaml
     command: storm nimbus
 
-  supervisor:
+  supervisor1:
     image: storm:2.2.0
-    container_name: supervisor
-    hostname: supervisor
+    container_name: supervisor1
+    hostname: supervisor1
     restart: always
     depends_on:
       - nimbus
@@ -29,8 +29,24 @@ services:
       - zoo2
       - zoo3
     volumes:
-      - supervisor-data:/data
-      - supervisor-logs:/logs
+      - supervisor1-data:/data
+      - supervisor1-logs:/logs
+      - ${SANDBOX_BASE_DIR}/deployment/apache-cluster/storm/storm.yaml:/conf/storm.yaml
+    command: storm supervisor
+
+  supervisor2:
+    image: storm:2.2.0
+    container_name: supervisor2
+    hostname: supervisor2
+    restart: always
+    depends_on:
+      - nimbus
+      - zoo1
+      - zoo2
+      - zoo3
+    volumes:
+      - supervisor2-data:/data
+      - supervisor2-logs:/logs
       - ${SANDBOX_BASE_DIR}/deployment/apache-cluster/storm/storm.yaml:/conf/storm.yaml
     command: storm supervisor
 
@@ -61,10 +77,14 @@ volumes:
     name: nimbus-data
   nimbus-logs:
     name: nimbus-logs
-  supervisor-data:
-    name: supervisor-data
-  supervisor-logs:
-    name: supervisor-logs
+  supervisor1-data:
+    name: supervisor1-data
+  supervisor1-logs:
+    name: supervisor1-logs
+  supervisor2-data:
+    name: supervisor2-data
+  supervisor2-logs:
+    name: supervisor2-logs
   ui-data:
     name: ui-data
   ui-logs:
