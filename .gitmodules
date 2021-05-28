@@ -1,3 +1,6 @@
+[submodule "nestjs-sandbox"]
+	path = nestjs-sandbox
+	url = git@github.com:quentinpigne/nestjs-sandbox.git
 [submodule "nodejs-sandbox"]
 	path = nodejs-sandbox
 	url = git@github.com:quentinpigne/nodejs-sandbox.git
