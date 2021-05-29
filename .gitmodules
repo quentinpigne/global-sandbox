@@ -1,24 +1,32 @@
 [submodule "nestjs-sandbox"]
-	path = nestjs-sandbox
-	url = git@github.com:quentinpigne/nestjs-sandbox.git
+  path = nestjs-sandbox
+  url = git@github.com:quentinpigne/nestjs-sandbox.git
+  branch = master
 [submodule "nodejs-sandbox"]
-	path = nodejs-sandbox
-	url = git@github.com:quentinpigne/nodejs-sandbox.git
+  path = nodejs-sandbox
+  url = git@github.com:quentinpigne/nodejs-sandbox.git
+  branch = master
 [submodule "reactjs-sandbox"]
-	path = reactjs-sandbox
-	url = git@github.com:quentinpigne/reactjs-sandbox.git
+  path = reactjs-sandbox
+  url = git@github.com:quentinpigne/reactjs-sandbox.git
+  branch = master
 [submodule "spring-gateway-sandbox"]
-	path = spring-gateway-sandbox
-	url = git@github.com:quentinpigne/spring-gateway-sandbox.git
+  path = spring-gateway-sandbox
+  url = git@github.com:quentinpigne/spring-gateway-sandbox.git
+  branch = master
 [submodule "spring-sandbox-java"]
-	path = spring-sandbox-java
+  path = spring-sandbox-java
   url = git@github.com:quentinpigne/spring-sandbox-java.git
+  branch = master
 [submodule "spring-sandbox-kotlin"]
-	path = spring-sandbox-kotlin
+  path = spring-sandbox-kotlin
   url = git@github.com:quentinpigne/spring-sandbox-kotlin.git
+  branch = master
 [submodule "storm-sandbox"]
-	path = storm-sandbox
-	url = git@github.com:quentinpigne/storm-sandbox.git
+  path = storm-sandbox
+  url = git@github.com:quentinpigne/storm-sandbox.git
+  branch = master
 [submodule "webpack-sandbox"]
-	path = webpack-sandbox
-	url = git@github.com:quentinpigne/webpack-sandbox.git
+  path = webpack-sandbox
+  url = git@github.com:quentinpigne/webpack-sandbox.git
+  branch = master
