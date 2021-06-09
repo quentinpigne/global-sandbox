@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   spring-gateway-sandbox:
-    image: maven:3.6.3-openjdk-8
+    image: maven:3.8.1-openjdk-8
     container_name: spring-gateway-sandbox
     environment:
       SPRING_PROFILES_ACTIVE: docker
@@ -15,7 +15,7 @@ services:
     command: mvn spring-boot:run
 
   spring-sandbox-java:
-    image: maven:3.6.3-openjdk-8
+    image: maven:3.8.1-openjdk-8
     container_name: spring-sandbox-java
     environment:
       SPRING_PROFILES_ACTIVE: docker
@@ -36,7 +36,7 @@ services:
     command: mvn spring-boot:run
 
   spring-sandbox-kotlin:
-    image: gradle:6.8.3-jdk8
+    image: gradle:7.0.2-jdk8
     container_name: spring-sandbox-kotlin
     environment:
       SPRING_PROFILES_ACTIVE: docker
@@ -57,7 +57,7 @@ services:
     command: gradle bootRun
 
   nodejs-sandbox:
-    image: node:15.12.0-alpine
+    image: node:16.3.0-alpine
     container_name: nodejs-sandbox
     volumes:
       - ${SANDBOX_BASE_DIR}/nodejs-sandbox/:/src
@@ -65,7 +65,7 @@ services:
     command: npm start
 
   reactjs-sandbox:
-    image: node:15.12.0-alpine
+    image: node:16.3.0-alpine
     container_name: reactjs-sandbox
     ports:
       - 3000:3000

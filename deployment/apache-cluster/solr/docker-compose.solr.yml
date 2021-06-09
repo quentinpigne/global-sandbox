@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   solr1:
-    image: solr:8.8.1
+    image: solr:8.8.2
     container_name: solr1
     restart: always
     ports:
@@ -17,7 +17,7 @@ services:
       - solr1-data:/var/solr
 
   solr2:
-    image: solr:8.8.1
+    image: solr:8.8.2
     container_name: solr2
     restart: always
     ports:
@@ -32,7 +32,7 @@ services:
       - solr2-data:/var/solr
 
   solr3:
-    image: solr:8.8.1
+    image: solr:8.8.2
     container_name: solr3
     restart: always
     ports:
@@ -47,7 +47,7 @@ services:
       - solr3-data:/var/solr
 
   solr4:
-    image: solr:8.8.1
+    image: solr:8.8.2
     container_name: solr4
     restart: always
     ports:
