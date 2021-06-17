@@ -1,3 +1,7 @@
+[submodule "angular-sandbox"]
+  path = angular-sandbox
+  url = git@github.com:quentinpigne/angular-sandbox.git
+  branch = master
 [submodule "nestjs-sandbox"]
   path = nestjs-sandbox
   url = git@github.com:quentinpigne/nestjs-sandbox.git
