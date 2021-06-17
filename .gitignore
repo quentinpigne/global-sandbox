@@ -1,0 +1,10 @@
+.env
+angular-sandbox/
+nestjs-sandbox/
+nodejs-sandbox/
+reactjs-sandbox/
+spring-gateway-sandbox/
+spring-sandbox-java/
+spring-sandbox-kotlin/
+storm-sandbox/
+webpack-sandbox/
