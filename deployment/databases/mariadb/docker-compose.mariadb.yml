@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb:10.6.2
+    container_name: mariadb
+    restart: always
+    environment:
+      MARIADB_DATABASE: public
+      MARIADB_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+
+networks:
+  default:
+    name: databases-network
+
+volumes:
+  mariadb-data:
+    name: mariadb-data
