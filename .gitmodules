@@ -26,6 +26,10 @@
   path = spring-sandbox-kotlin
   url = git@github.com:quentinpigne/spring-sandbox-kotlin.git
   branch = master
+[submodule "stencil-sandbox"]
+  path = stencil-sandbox
+  url = git@github.com:quentinpigne/stencil-sandbox.git
+  branch = master
 [submodule "storm-sandbox"]
   path = storm-sandbox
   url = git@github.com:quentinpigne/storm-sandbox.git
