@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  traefik:
+    image: traefik:v2.5.3
+    container_name: traefik
+    restart: always
+    ports:
+      - 8080:8080
+      - 80:80
+    volumes:
+      - ${SANDBOX_BASE_DIR}/deployment/networking/traefik/traefik.yml:/etc/traefik/traefik.yml
+
+networks:
+  default:
+    name: networking-network
