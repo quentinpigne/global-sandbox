@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.13.1
+    image: docker.elastic.co/kibana/kibana:7.15.2
     container_name: kibana
     restart: always
     ports:

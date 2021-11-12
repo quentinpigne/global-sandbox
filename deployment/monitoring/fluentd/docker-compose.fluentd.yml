@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   fluentd:
-    image: fluentd:v1.12.1-debian-1.0
+    image: fluentd:v1.14.0-debian-1.0
     build: ../../../build/fluentd
     container_name: fluentd
     restart: always

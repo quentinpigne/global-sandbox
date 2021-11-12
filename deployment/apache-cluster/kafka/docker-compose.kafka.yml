@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   kafka1:
-    image: bitnami/kafka:2.8.0
+    image: bitnami/kafka:3.0.0
     container_name: kafka1
     restart: always
     hostname: kafka1
@@ -24,7 +24,7 @@ services:
       - kafka1-data:/bitnami/data/
 
   kafka2:
-    image: bitnami/kafka:2.8.0
+    image: bitnami/kafka:3.0.0
     container_name: kafka2
     restart: always
     hostname: kafka2
@@ -46,7 +46,7 @@ services:
       - kafka2-data:/bitnami/data/
 
   kafka3:
-    image: bitnami/kafka:2.8.0
+    image: bitnami/kafka:3.0.0
     container_name: kafka3
     restart: always
     hostname: kafka3

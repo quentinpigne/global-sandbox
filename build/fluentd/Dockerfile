@@ -1,4 +1,4 @@
-FROM fluent/fluentd:v1.12.1-debian-1.0
+FROM fluent/fluentd:v1.14.0-debian-1.0
 LABEL maintainers="Quentin Pigné <quentin.pigne@gmail.com>"
 
 # Use root account to use apt
