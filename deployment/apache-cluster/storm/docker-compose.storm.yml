@@ -1,8 +1,8 @@
-version: '3.8'
+version: '3.9'
 
 services:
   nimbus:
-    image: storm:2.3.0
+    image: storm:2.4.0
     container_name: nimbus
     hostname: nimbus
     restart: always
@@ -19,7 +19,7 @@ services:
     command: storm nimbus
 
   supervisor1:
-    image: storm:2.3.0
+    image: storm:2.4.0
     container_name: supervisor1
     hostname: supervisor1
     restart: always
@@ -35,7 +35,7 @@ services:
     command: storm supervisor
 
   supervisor2:
-    image: storm:2.3.0
+    image: storm:2.4.0
     container_name: supervisor2
     hostname: supervisor2
     restart: always
@@ -51,7 +51,7 @@ services:
     command: storm supervisor
 
   ui:
-    image: storm:2.3.0
+    image: storm:2.4.0
     container_name: ui
     hostname: ui
     restart: always

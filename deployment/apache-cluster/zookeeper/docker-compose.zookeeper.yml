@@ -1,8 +1,8 @@
-version: '3.8'
+version: '3.9'
 
 services:
   zoo1:
-    image: zookeeper:3.7.0
+    image: zookeeper:3.8.1
     container_name: zoo1
     restart: always
     hostname: zoo1
@@ -18,7 +18,7 @@ services:
       - zoo1-logs:/logs
 
   zoo2:
-    image: zookeeper:3.7.0
+    image: zookeeper:3.8.1
     container_name: zoo2
     restart: always
     hostname: zoo2
@@ -34,7 +34,7 @@ services:
       - zoo2-logs:/logs
 
   zoo3:
-    image: zookeeper:3.7.0
+    image: zookeeper:3.8.1
     container_name: zoo3
     restart: always
     hostname: zoo3

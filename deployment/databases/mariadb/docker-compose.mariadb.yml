@@ -1,8 +1,8 @@
-version: '3.8'
+version: '3.9'
 
 services:
   mariadb:
-    image: mariadb:10.7.1
+    image: mariadb:10.11.2
     container_name: mariadb
     restart: always
     environment:
